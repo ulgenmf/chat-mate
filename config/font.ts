@@ -1,8 +1,8 @@
 import {
 	Fira_Code,
 	Inter,
-  Orbitron,
-  Roboto,
+	Orbitron,
+	Roboto,
 	Plus_Jakarta_Sans,
 } from "next/font/google";
 
@@ -11,22 +11,22 @@ export const inter = Inter({
 	variable: "--font-sans",
 });
 export const roboto = Roboto({
-  subsets: ["latin"],
-  weight:['400','100'],
+	subsets: ["latin"],
+	weight: ['400', '100'],
 	variable: "--font-roboto",
 });
 
-export const FiraCode = Fira_Code({
+export const firaCode = Fira_Code({
 	subsets: ["latin"],
-	variable: "--font-mono",
+	variable: "--font-firaCode",
 });
 export const orbitron = Orbitron({
 	subsets: ["latin"],
 	variable: "--font-orbitron",
-  weight: ["400", '500','600'],
+	weight: ["400", '500', '600'],
 });
 export const jakarta = Plus_Jakarta_Sans({
 	subsets: ["latin"],
 	variable: "--font-jakarta",
-	weight: ['400','700','800','500'],
+	weight: ['400', '700', '800', '500'],
 });

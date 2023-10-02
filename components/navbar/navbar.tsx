@@ -7,12 +7,13 @@ import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "../mode-toggle";
+import MobileSidebar from "../mobileSidebar/mobileSidebar";
 
 export default function Navbar() {
 	return (
-		<div className="fixed z-50 flex items-center justify-between w-full px-4 py-2 text-white border-b bg-noble-black-900 border-b-noble-black-400/20">
+		<div className="fixed z-50 flex items-center justify-between w-full h-16 px-4 py-2 text-white border-b bg-noble-black-900 border-b-noble-black-400/20">
 			<div className="flex items-center">
-				<Menu className="block text-white md:hidden" />
+				<MobileSidebar />
 				<Link href={"/"}>
 					<h1
 						className={

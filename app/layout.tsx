@@ -1,9 +1,10 @@
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { inter, FiraCode, orbitron, jakarta, roboto } from "@/config/font";
+import { inter, orbitron, jakarta, roboto, firaCode } from "@/config/font";
 
 import TestElement from "@/components/textElements/test";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -19,7 +20,10 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html lang="en">
 				<body
-					className={`   ${inter.variable} ${FiraCode.variable} ${orbitron.variable} ${jakarta.variable} ${roboto.variable}`}
+					className={cn(
+						"",
+						`   ${inter.variable} ${firaCode.variable} ${orbitron.variable} ${jakarta.variable} ${roboto.variable}`
+					)}
 				>
 					{/* <TestElement /> */}
 					{children}

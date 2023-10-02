@@ -1,7 +1,7 @@
 import prismadb from "@/lib/prismadb";
 import React from "react";
 import { Categories } from "../../../../../components/categories/categories";
-import CompanionForm from "./components/companionForm";
+import { CompanionForm } from "./components/companionForm";
 
 interface CompanionIdPageProps {
 	params: {
@@ -17,7 +17,7 @@ async function CompanionId({ params }: CompanionIdPageProps) {
 	});
 
 	const categories = await prismadb.category.findMany();
-	return <CompanionForm initalData={companion} categories={categories} />;
+	return <CompanionForm initialData={companion} categories={categories} />;
 }
 
 export default CompanionId;

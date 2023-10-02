@@ -77,6 +77,9 @@ export const CompanionForm = ({
 		},
 	});
 
+	const instructionsPlaceHolder =
+		'"You are a seasoned financial expert, and your mission is to provide valuable advice to help individuals achieve financial success. Your expertise covers a wide range of financial topics, including investments, budgeting, saving, and wealth management. Your explanations should be comprehensive, yet easily digestible, catering to both beginners and experienced individuals seeking financial guidance. Your approach is to make complex financial concepts accessible, fostering an environment where people can make informed decisions to enhance their financial well-being. Please provide instructions for your AI model to generate insightful financial advice"';
+
 	const isLoading = form.formState.isSubmitting;
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -89,12 +92,14 @@ export const CompanionForm = ({
 				<form onSubmit={form.handleSubmit(onSubmit)} className="pb-10 space-y-8">
 					<div className="w-full col-span-2 space-y-2">
 						<div>
-							<h3 className="text-lg font-medium">General Information</h3>
+							<h3 className="text-lg text-white font-firaCode font-medium">
+								General Information
+							</h3>
 							<p className="text-sm text-muted-foreground">
 								General information about your Companion
 							</p>
 						</div>
-						<Separator className="bg-primary/10" />
+						<Separator className="bg-noble-black-500/90" />
 					</div>
 					<FormField
 						name="src"
@@ -111,15 +116,20 @@ export const CompanionForm = ({
 							</FormItem>
 						)}
 					/>
-					<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+					<div className="grid grid-cols-1  gap-4 md:grid-cols-2">
 						<FormField
 							name="name"
 							control={form.control}
 							render={({ field }) => (
 								<FormItem className="col-span-2 md:col-span-1">
-									<FormLabel>Name</FormLabel>
+									<FormLabel className="text-white font-jakarta">Name</FormLabel>
 									<FormControl>
-										<Input disabled={isLoading} placeholder="Elon Musk" {...field} />
+										<Input
+											className="bg-noble-black-900/40 border-none "
+											disabled={isLoading}
+											placeholder="My AI Friend"
+											{...field}
+										/>
 									</FormControl>
 									<FormDescription>
 										This is how your AI Companion will be named.
@@ -133,11 +143,12 @@ export const CompanionForm = ({
 							control={form.control}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Description</FormLabel>
+									<FormLabel className="text-white font-jakarta">Description</FormLabel>
 									<FormControl>
 										<Input
+											className="bg-noble-black-900/40 border-none "
 											disabled={isLoading}
-											placeholder="CEO & Founder of Tesla, SpaceX"
+											placeholder="Helpfull AI Assistant"
 											{...field}
 										/>
 									</FormControl>
@@ -153,7 +164,7 @@ export const CompanionForm = ({
 							name="categoryId"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Category</FormLabel>
+									<FormLabel className="text-white font-jakarta">Category</FormLabel>
 									<Select
 										disabled={isLoading}
 										onValueChange={field.onChange}
@@ -161,16 +172,20 @@ export const CompanionForm = ({
 										defaultValue={field.value}
 									>
 										<FormControl>
-											<SelectTrigger className="bg-background">
+											<SelectTrigger className="bg-noble-black-900/40 text-white">
 												<SelectValue
 													defaultValue={field.value}
 													placeholder="Select a category"
 												/>
 											</SelectTrigger>
 										</FormControl>
-										<SelectContent>
+										<SelectContent className="bg-noble-black-900/90 focus:border-none border-none font-jakarta text-white">
 											{categories.map((category) => (
-												<SelectItem key={category.id} value={category.id}>
+												<SelectItem
+													className="border-none"
+													key={category.id}
+													value={category.id}
+												>
 													{category.name}
 												</SelectItem>
 											))}
@@ -182,64 +197,35 @@ export const CompanionForm = ({
 							)}
 						/>
 					</div>
-					<div className="w-full space-y-2">
-						<div>
-							<h3 className="text-lg font-medium">Configuration</h3>
-							<p className="text-sm text-muted-foreground">
-								Detailed instructions for AI Behaviour
-							</p>
+					<div className="space-y-2 w-full">
+						<div className="">
+							<h3 className="text-lg font-medium font-firaCode text-white">
+								Configuration
+							</h3>
+							<p className="text-muted-foreground">Detailed Instructions</p>
+							<Separator className="bg-noble-black-500/90 mt-2" />
 						</div>
-						<Separator className="bg-primary/10" />
-					</div>
-					<FormField
-						name="instructions"
-						control={form.control}
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Instructions</FormLabel>
-								<FormControl>
-									<Textarea
-										disabled={isLoading}
-										rows={7}
-										className="resize-none bg-background"
-										{...field}
-									/>
-								</FormControl>
-								<FormDescription>
-									Describe in detail your companion&apos;s backstory and relevant
-									details.
-								</FormDescription>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						name="seed"
-						control={form.control}
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Example Conversation</FormLabel>
-								<FormControl>
-									<Textarea
-										disabled={isLoading}
-										rows={7}
-										className="resize-none bg-background"
-										{...field}
-									/>
-								</FormControl>
-								<FormDescription>
-									Write couple of examples of a human chatting with your AI companion,
-									write expected answers.
-								</FormDescription>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<div className="flex justify-center w-full">
-						<Button size="lg" disabled={isLoading}>
-							{initialData ? "Edit your companion" : "Create your companion"}
-							<Wand2 className="w-4 h-4 ml-2" />
-						</Button>
+						<FormField
+							name="name"
+							control={form.control}
+							render={({ field }) => (
+								<FormItem className="col-span-2 md:col-span-1">
+									<FormLabel className="text-white font-jakarta">Instructions</FormLabel>
+									<FormControl>
+										<Textarea
+											className="bg-noble-black-900/40 outline-none text-noble-black-200 resize-none border-none "
+											disabled={isLoading}
+											placeholder={instructionsPlaceHolder}
+											{...field}
+										/>
+									</FormControl>
+									<FormDescription>
+										This is how your AI Companion will be named.
+									</FormDescription>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
 					</div>
 				</form>
 			</Form>

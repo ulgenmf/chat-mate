@@ -29,7 +29,7 @@ export default function Navbar() {
 					Upgrade
 					<Sparkles className="w-4 h-4 gap-2 text-white fill-white" />
 				</Button>
-				<UserButton />
+				<UserButton afterSignOutUrl="/" />
 			</div>
 		</div>
 	);

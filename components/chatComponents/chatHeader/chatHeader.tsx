@@ -19,8 +19,8 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/components/ui/use-toast";
-import BotAvatar from "../BotAvatar/botAvatar";
-import { Button } from "../ui/button";
+import BotAvatar from "@/components/BotAvatar/botAvatar";
+import { Button } from "@/components/ui/button";
 
 interface ChatHeaderProps {
 	companion: Companion & {
@@ -53,9 +53,9 @@ const ChatHeader = ({ companion }: ChatHeaderProps) => {
 	};
 
 	return (
-		<div className="flex items-center justify-between w-full pb-4 border-b border-primary/10">
+		<div className="flex items-center justify-between w-full pb-4 border-b border-noble-black-400 ">
 			<div className="flex items-center gap-x-2">
-				<Button onClick={() => router.back()} size="icon" variant="ghost">
+				<Button onClick={() => router.push("/")} size="icon" variant="ghost">
 					<ChevronLeft className="w-8 h-8" />
 				</Button>
 				<BotAvatar src={companion.src} />

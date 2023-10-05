@@ -8,10 +8,10 @@ import UserAvatar from "@/components/userAvatar/userAvatar";
 import { Button } from "@/components/ui/button";
 import { CopyIcon } from "lucide-react";
 export interface ChatMessageProps {
+	id?: any;
 	role: "user" | "system";
 	content?: string;
-
-	isLoading: boolean;
+	isLoading?: boolean;
 	src?: string;
 }
 function ChatMessage({ role, content, isLoading, src }: ChatMessageProps) {

@@ -1,8 +1,10 @@
 import { Companion } from "@prisma/client";
+import { v4 as uuidv4 } from "uuid";
 import React, { ElementRef, useEffect, useRef, useState } from "react";
 import ChatMessage, {
 	ChatMessageProps,
 } from "@/components/chatComponents/chatMessage/chatMessage";
+import prismadb from "@/lib/prismadb";
 interface ChatMessagesProps {
 	isLoading: boolean;
 	messages: ChatMessageProps[];
@@ -26,22 +28,21 @@ function ChatMessages({ isLoading, messages, companion }: ChatMessagesProps) {
 	return (
 		<div className="flex-1 pr-4 overflow-y-auto">
 			<ChatMessage
-				role={"system"}
-				content={
-					"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio fuga impedit ducimus nihil facere dignissimos voluptates possimus quidem necessitatibus corporis ullam, at commodi officiis, et temporibus vel aperiam non quos."
-				}
 				isLoading={fakeLoading}
 				src={companion.src}
+				role="system"
+				content={`Hello, I am ${companion.name}, ${companion.description}`}
 			/>
-			{messages.map((msg) => (
+			{messages.map((message, idx) => (
 				<ChatMessage
-					role={msg.role}
-					isLoading={fakeLoading}
-					key={msg.content}
-					content={msg.content}
+					key={uuidv4()}
+					src={companion.src}
+					content={message.content}
+					role={message.role}
 				/>
 			))}
-			{isLoading && <ChatMessage role={"system"} src={companion.src} isLoading />}
+
+			{isLoading && <ChatMessage src={companion.src} role="system" isLoading />}
 			<div ref={scrollRef} />
 		</div>
 	);

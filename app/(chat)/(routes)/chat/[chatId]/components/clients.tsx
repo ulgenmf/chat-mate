@@ -24,8 +24,8 @@ function ChatClient({ companion }: ChatClientProps) {
 	const { input, isLoading, handleInputChange, handleSubmit, stop, setInput } =
 		useCompletion({
 			api: `/api/chat/${companion.id}`,
-			onFinish(prompt, completion) {
-				const systemMessage = {
+			onFinish(_prompt, completion) {
+				const systemMessage: ChatMessageProps = {
 					role: "system",
 					content: completion,
 				};
@@ -33,10 +33,13 @@ function ChatClient({ companion }: ChatClientProps) {
 				setInput("");
 				router.refresh();
 			},
+			onResponse(res) {
+				console.log(res);
+			},
 		});
 
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-		const userMessage = {
+		const userMessage: ChatMessageProps = {
 			role: "user",
 			content: input,
 		};

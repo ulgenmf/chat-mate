@@ -2,7 +2,7 @@ import "./globals.css";
 import { ClerkProvider, auth } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { inter, orbitron, jakarta, roboto, firaCode } from "@/config/font";
-
+import { MemoryManager } from "@/lib/memory";
 import TestElement from "@/components/textElements/test";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
@@ -17,8 +17,11 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	console.log(
+		"aaaXXXXXXXXXXXXXXXXXXXXXaaaaaaaaaaaaaaaaa!!!!!!!!!!!!!aaaaaaaaaaaaaaaa1111111111111111111111111111111111222222222222222222222222222222222222222233333333333333333333"
+	);
+
 	const userId = auth();
-	console.log(userId.userId);
 	return (
 		<ClerkProvider>
 			<html lang="en">

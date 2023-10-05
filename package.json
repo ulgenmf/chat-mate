@@ -24,6 +24,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@upstash/ratelimit": "^0.4.4",
     "@upstash/redis": "^1.22.1",
+    "@vercel/analytics": "^1.0.2",
     "ai": "^2.2.14",
     "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",

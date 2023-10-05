@@ -5,6 +5,8 @@ import { inter, orbitron, jakarta, roboto, firaCode } from "@/config/font";
 import { MemoryManager } from "@/lib/memory";
 import TestElement from "@/components/textElements/test";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
+
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
 						`   ${inter.variable} ${firaCode.variable} ${orbitron.variable} ${jakarta.variable} ${roboto.variable}`
 					)}
 				>
-					{/* <TestElement /> */}
+					{/* <TestElement /> */} <Analytics />
 					{children}
 					<Toaster />
 				</body>
